@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.anloq.activity.AdActivity1">
+
+
+
+    <FrameLayout
+        android:layout_width="1920px"
+        android:layout_height="1580px"
+        android:id="@+id/fl_container"
+        android:layout_alignParentEnd="true"
+        ></FrameLayout>
+
+
+    <SurfaceView
+        android:layout_width="1920px"
+        android:layout_height="1580px"
+        android:id="@+id/surface_draw_ad1"
+        android:layout_alignParentEnd="true"
+        />
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:textColor="#FF7F00"
+        android:gravity="center"
+        android:layout_below="@+id/fl_container"
+        android:id="@+id/tv_name"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="白灯"
+            android:id="@+id/btn_white"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="红灯"
+            android:id="@+id/btn_red"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="绿灯"
+            android:id="@+id/btn_green"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="继电器"
+            android:id="@+id/btn_jidianqi"
+            />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

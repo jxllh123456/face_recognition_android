@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.example.summer.facedemo"
+        minSdkVersion 23
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        externalNativeBuild {
+            cmake {
+                // cppFlags "-std=c++11","-fexceptions" ,"-DDLIB_NO_GUI_SUPPORT=yes","-DANDROID_STL=c++_shared","-DANDROID_ARM_NEON=TRUE"
+                // arguments "-DANDROID_TOOLCHAIN=clang","-DDLIB_NO_GUI_SUPPORT=yes","-DCMAKE_BUILD_TYPE=Release","-DDLIB_USE_BLAS=ON"
+                // cppFlags "mfloat-abi=soft"
+                arguments "-DANDROID_TOOLCHAIN=clang","-DDLIB_NO_GUI_SUPPORT=yes", "-DDLIB_USE_BLAS=yes", "-DDLIB_USE_LAPACK=yes", "-DOPENBLAS_LIBS=/Users/summer/OpenBLAS/lib", "-DCMAKE_LIBRARY_PATH=/Users/summer/OpenBLAS/lib", "-DCMAKE_BUILD_TYPE=Release"
+
+//                "-std=c++11","-fexceptions","-DANDROID_STL=c++_shared",
+            }
+        }
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+
+    externalNativeBuild {
+        cmake {
+            path 'CMakeLists.txt'
+        }
+    }
+
+
+    splits {
+        abi {
+            enable true
+            reset()
+            //include 'x86', 'x86_64', 'armeabi-v7a', 'armeabi' 'arm64-v8a'
+            include 'arm64-v8a'
+            universalApk false
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
